@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/alert.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css">
+    <title>Download YouTube Video</title>
+</head>
+<body>
+    <main>
+        <div class="containers">
+            <div id="alert-container"></div>
+            <div class="title-text">
+                <h1>YOUTUBE DOWNLOADER</h1>
+            </div>
+            <form id="download-form">
+                <div class="input-wrapper">
+                    <input type="text" id="video-url" placeholder="Enter YouTube video URL" value="" required>
+                    <span class="paste" id="paste"><span><i class="icon icon-paste"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paste</font></font></span></span>
+                </div>
+                <button type="submit" id="download-button"><lord-icon src="https://cdn.lordicon.com/slmechys.json" trigger="hover" style="width:20px;height:20px;margin-right:10px;display:inline-block"></lord-icon>DOWNLOAD</button>
+            </form>
+        </div>
+
+        <div id="loading-container"></div>
+
+        <div id="download-result"></div>
+
+        <div>
+            <div class="col-text">
+                <h1>HOW TO USE</h1>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <div class="icon-holder">
+                        <img src="img/search.png" alt="Find Videos" width="100px">
+                    </div>
+                    <div class="desc">
+                        <h5>
+                            <div class="why-title">
+                                <span class="step-count">1</span>Find Videos
+                            </div>
+                        </h5>
+                        <p> Copy the Youtube video URL by clicking <b>Share</b> and choosing <b>Copy Link</b></p>
+                    </div>
+                </div>
+    
+                <div class="col-12 col-md-4">
+                    <div class="icon-holder">
+                        <img src="img/paster.png" alt="Paste Video" width="100px">
+                    </div>
+                    <div class="desc">
+                        <h5>
+                            <div class="why-title">
+                                <span class="step-count">2</span>Paste Video
+                            </div>
+                        </h5>
+                        <p> Paste the Youtube video URL in the box above and hit the <b>Download</b> button. </p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="icon-holder">
+                        <img src="img/download.png" alt="Download Video" width="100px">
+                    </div>
+                    <div class="desc">
+                        <h5>
+                            <div class="why-title">
+                                <span class="step-count">3</span>Download Video
+                            </div>
+                        </h5>
+                        <p> Click <b>Download (Download the video resolution you want)</b> to download video Mp4 and Mp3 </p>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 TikTok Downloader</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/clipboard.js"></script>
+    <script src="js/function.js"></script>
+</body>
+</html>
