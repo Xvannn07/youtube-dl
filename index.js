@@ -21,7 +21,7 @@ app.get("/", async (req, res) => {
 
 app.post("/api", async (req, res) => {
     try{
-        if(/https:\/\/(?:youtube\.com\/(?:shorts\/|watch\?v=|watch\?v=|watch\?v=)|youtu\.be\/)([\w-]+)/)[1]) {
+        if(req.body.url?.split(/https:\/\/(?:youtube\.com\/(?:shorts\/|watch\?v=|watch\?v=|watch\?v=)|youtu\.be\/)([\w-]+)/)[1]) {
             let resp = await axios.request({
                 method: "POST",
                 url: "https://khrisna-api-sadteam.hf.space/api/youtube/info",
