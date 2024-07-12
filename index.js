@@ -21,17 +21,29 @@ app.get("/", async (req, res) => {
 
 app.post("/api", async (req, res) => {
     try{
-        let resp = await axios.request({
-            method: "POST",
-            url: "https://khrisna-api-sadteam.hf.space/api/youtube/info",
-            data: { status: "@SadTeam77", url: req.body.url }
-        })
-        res.json({ 
-            videoDetail: resp.data.result.videoDetails,
-            format_video: resp.data.result.formats,
-            realeted_video: resp.data.result.related_videos
-         })
+        if(/https:\/\/(?:youtube\.com\/(?:shorts\/|watch\?v=|watch\?v=|watch\?v=)|youtu\.be\/)([\w-]+)/)[1]) {
+            let resp = await axios.request({
+                method: "POST",
+                url: "https://khrisna-api-sadteam.hf.space/api/youtube/info",
+                data: { status: "@SadTeam77", url: req.body.url }
+            })
+            res.json({ 
+                status: "oke",
+                videoDetail: resp.data.result.videoDetails,
+                format_video: resp.data.result.formats,
+                realeted_video: resp.data.result.related_videos
+             })
+        } else {
+            res.json({ 
+                status: "error",
+                message: "Id Video Not Found, Please enter the YouTube video URL correctly"
+            })
+        }
     } catch(e) {
+         res.json({
+            status: "error",
+            message: "An error occurred on the server, please wait a moment, we will fix it immediately"
+        })
         console.log("terjadi kesalahan: " + e.message)
     }
 })
