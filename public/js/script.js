@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         let tr = document.createElement('tr');
                         tr.innerHTML = `
                               <td>${element.qualityLabel}</td>
-                              <td>${byteToMegabyte(element.contentLength || (await axios({ method: "GET", url: element.url, responseType: "arraybuffer" })).data.length) || "Not Found"}</td>
+                              <td>${byteToMegabyte(element.contentLength || (await axios({ method: "GET", url: element.url, headers: { "User-Agent": "okhttp/4.4.0", "Referer": element.url, "Origin": "https://google.com" } responseType: "arraybuffer" })).data.length) || "Not Found"}</td>
                               <td>${element.mimeType.split(";")[0]}</td>
                               <td><span class="icon-center">${element.hasAudio ? '<i class="fa-solid fa-volume-high"></i>': '<i class="fa-solid fa-volume-xmark"></i>'}</span></td>
                               <td><a target="_blank" href=${element.url}><button type="button" class="btn btn-success"><lord-icon src="https://cdn.lordicon.com/xcrjfuzb.json" trigger="loop" delay="1000" style="width:15px;height:15px;margin-right:10px;display:inline-block"> </lord-icon>Download</button></a></td>
