@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
                               <td>${element.qualityLabel}</td>
                               <td>${byteToMegabyte(element.contentLength) || "Not Found"}</td>
                               <td>${element.mimeType.split(";")[0]}</td>
-                              <td>${element.hasAudio ? '<i class="fas fa-volume-up"></i>': '<i class="fas fa-volume-mute"></i>'}</td>
+                              <td>${element.hasAudio ? '<i class="fa-solid fa-volume-high"></i>': '<i class="fa-solid fa-volume-xmark"></i>'}</td>
                               <td><a target="_blank" href=${element.url}><button type="button" class="btn btn-success"><lord-icon src="https://cdn.lordicon.com/xcrjfuzb.json" trigger="loop" delay="1000" style="width:15px;height:15px;margin-right:10px;display:inline-block"> </lord-icon>Download</button></a></td>
                         `;
                         tbodyA.appendChild(tr);
