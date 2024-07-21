@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     data.format_video.forEach(element => {
                       if(element.mimeType.split(";")[0] == "video/mp4" || element.mimeType.split(";")[0] == "video/webm") {
                         let tr = document.createElement('tr');
-                        let contentLength = element.contentLength || await (await axios({method: "GET", url: element.url, responseType: "arraybuffer" })).data?.length
+                        let contentLength = element.contentLength || await axios({method: "GET", url: element.url, responseType: "arraybuffer" }).then(dat => { return dat.data.length });
                         tr.innerHTML = `
                               <td>${element.qualityLabel}</td>
                               <td>${byteToMegabyte(contentLength) || "Not Found"}</td>
