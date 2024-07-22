@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
           await costumAlert("progres...", { status: "procces"});
           await fetch("/api", {
             method: "POST",
-            body: { url: videoUrl }
+            body: JSON.stringify({ url: videoUrl })
           })
           .then(resp => resp.json())
           .then(async (data) => {
