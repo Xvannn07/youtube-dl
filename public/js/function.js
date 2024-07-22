@@ -51,11 +51,10 @@ function byteToMegabyte(bytes) {
 }
 
 async function costumAlert(message, { status }) {
-  await axios({
-    method: "GET",
-    url: "/file/alert.html"
+  await fetch("/file/alert.html", {
+    method: "GET"
   })
-  .then(resp => resp.data)
+  .then(resp => resp.text())
   .then(htmls => {
     alertContainer.innerHTML = htmls;
     if(status == "fail") {
