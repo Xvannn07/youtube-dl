@@ -39,9 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
           })
           .then(resp => resp.json())
           .then(async (data) => {
-            await fetch({
-                method: "GET",
-                url: "/file/result.html"
+            await fetch("/file/result.html", {
+                method: "GET"
             })
             .then(resp => resp.text())
             .then(async (htmls) => {
