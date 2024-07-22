@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: "GET",
                 url: "/file/result.html"
             })
-            .then(resp => resp.json())
+            .then(resp => resp.text())
             .then(async (htmls) => {
                 
                 loadingElement.style.display = 'none';
