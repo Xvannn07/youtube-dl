@@ -21,18 +21,18 @@ app.get("/", async (req, res) => {
 
 app.post("/api", async (req, res) => {
     try{
-        if(req.body.url?.split(/https:\/\/(?:youtube\.com\/(?:shorts\/|watch\?v=|watch\?v=|watch\?v=)|youtu\.be\/)([\w-]+)/)[1]) {
-            let resp = await axios.request({
-                method: "POST",
-                url: "https://khrisna-api-sadteam.hf.space/api/youtube/info",
-                data: { status: "@SadTeam77", url: req.body.url }
-            })
+        let resp = await axios.request({
+             method: "POST",
+             url: "https://khrisna-api-sadteam.hf.space/api/youtube/info",
+             data: { status: "@SadTeam77", url: req.body.url }
+        })
+        if(resp.data.success) {
             res.json({ 
                 status: "oke",
                 videoDetail: resp.data.result.videoDetails,
                 format_video: resp.data.result.formats,
                 realeted_video: resp.data.result.related_videos
-             })
+            })
         } else {
             res.json({ 
                 status: "error",
