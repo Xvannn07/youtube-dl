@@ -38,6 +38,7 @@ app.post("/api", async (req, res) => {
                 status: "error",
                 message: "Id Video Not Found, Please enter the YouTube video URL correctly"
             })
+            console.log(res.data.message)
         }
     } catch(e) {
          res.json({
