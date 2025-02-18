@@ -3,6 +3,7 @@ const cors = require("cors")
 const path = require("path")
 const fs = require("fs")
 const axios = require("axios")
+const { ummy } = require("./src/scraper")
 
 global.func = require('./src/function')
 
@@ -21,11 +22,7 @@ app.get("/", async (req, res) => {
 
 app.post("/api", async (req, res) => {
     try{
-        let resp = await axios.request({
-             method: "POST",
-             url: "https://khrisna-api-sadteam.hf.space/api/youtube/info",
-             data: { status: "@SadTeam77", url: req.body.url }
-        })
+        let resp = await ummy(req.body.url);
         if(resp.data.success) {
             res.json({ 
                 status: "oke",
