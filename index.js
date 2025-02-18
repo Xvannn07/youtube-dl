@@ -23,19 +23,18 @@ app.get("/", async (req, res) => {
 app.post("/api", async (req, res) => {
     try{
         let resp = await ummy(req.body.url);
-        if(resp.data.success) {
+        if(resp.success) {
             res.json({ 
                 status: "oke",
-                videoDetail: resp.data.result.videoDetails,
-                format_video: resp.data.result.formats,
-                realeted_video: resp.data.result.related_videos
+                videoDetail: resp.meta,
+                format_video: resp.url
             })
         } else {
             res.json({ 
                 status: "error",
                 message: "Id Video Not Found, Please enter the YouTube video URL correctly"
             })
-            console.log(res.data.message)
+            console.log(res.log)
         }
     } catch(e) {
          res.json({
