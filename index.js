@@ -25,7 +25,7 @@ app.post("/api", async (req, res) => {
         let resp = await ummy(req.body.url);
            res.json({ 
                status: "oke",
-               videoDetail: resp.meta,
+               videoDetail: { thumbnail: meta.thumb, ...resp.meta },
                format_video: resp.url
            })
     } catch(e) {
