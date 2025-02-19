@@ -78,24 +78,24 @@ document.addEventListener('DOMContentLoaded', () => {
     
                     document.getElementById('thumb').src = data.videoDetail.thumbnails[2].url || data.videoDetail.thumbnails[1].url || data.videoDetail.thumbnails[0].url;
                     document.getElementById('title').textContent = "Title: " + data.videoDetail.title;
-                    document.getElementById('duration').textContent = "Duration: " + await convertToTime(data.videoDetail.lengthSeconds) || "Not Found";
-                    document.getElementById('author').textContent = "Author: " + data.videoDetail.author.name || "Not Found";
-                    document.getElementById('channel').textContent = "Channel: " + data.videoDetail.author.user || "Not Found";
-                    document.getElementById('upload').textContent = "Upload Date: " + await convertDateFormat(data.videoDetail.uploadDate) || "Not Found";
-                    document.getElementById('views').textContent = "Views: " + await convertViews(data.videoDetail.viewCount) || "Not Found";
+                    document.getElementById('duration').textContent = "Duration: " + await convertToTime(data.videoDetail.duration) || "Not Found";
+                    //document.getElementById('author').textContent = "Author: " + data.videoDetail.author.name || "Not Found";
+                    //document.getElementById('channel').textContent = "Channel: " + data.videoDetail.author.user || "Not Found";
+                    //document.getElementById('upload').textContent = "Upload Date: " + await convertDateFormat(data.videoDetail.uploadDate) || "Not Found";
+                    //document.getElementById('views').textContent = "Views: " + await convertViews(data.videoDetail.viewCount) || "Not Found";
      
                     // video result
                     const video_tabel = document.getElementById('video-table');
                     const tbodyA = document.createElement('tbody');
                     video_tabel.appendChild(tbodyA);
                     data.format_video.forEach(async(element) => {
-                      if(element.mimeType.split(";")[0] == "video/mp4" || element.mimeType.split(";")[0] == "video/webm") {
+                      if((element.ext === "mp4" || element.ext === "webm") && !element.audio ) {
                         let tr = document.createElement('tr');
                         tr.innerHTML = `
-                              <td>${element.qualityLabel}</td>
+                              <td>${element.quality}</td>
                               <td>${byteToMegabyte(element.contentLength || await (await (await fetch(element.url, { method: "GET", headers: { "User-Agent": "okhttp/4.4.0", "Referer": element.url, "Origin": "https://google.com" }}))).arrayBuffer())?.byteLength || "Not Found"}</td>
-                              <td>${element.mimeType.split(";")[0]}</td>
-                              <td><span class="icon-center">${element.hasAudio ? '<i class="fa-solid fa-volume-high"></i>': '<i class="fa-solid fa-volume-xmark"></i>'}</span></td>
+                              <td>${element.ext}</td>
+                              <td><span class="icon-center">${element.no_audio ? '<i class="fa-solid fa-volume-high"></i>': '<i class="fa-solid fa-volume-xmark"></i>'}</span></td>
                               <td><a target="_blank" href=${element.url}><button type="button" class="btn btn-success"><lord-icon src="https://cdn.lordicon.com/xcrjfuzb.json" trigger="loop" delay="1000" style="width:15px;height:15px;margin-right:10px;display:inline-block"> </lord-icon>Download</button></a></td>
                         `;
                         tbodyA.appendChild(tr);
@@ -107,10 +107,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const tbodyB = document.createElement('tbody');
                     audio_tabel.appendChild(tbodyB);
                     data.format_video.forEach(element => {
-                      if(element.mimeType.split(";")[0] == "audio/mp4" || element.mimeType.split(";")[0] == "audio/webm") {
+                      if((element.ext === "opus" || element.ext == "m4a") && element.audio) {
                         let tr = document.createElement('tr');
                         tr.innerHTML = `
-                              <td>${element.audioQuality}</td>
+                              <td>${element.quality}</td>
                               <td>${byteToMegabyte(element.contentLength)}</td>
                               <td>${element.mimeType.split(";")[0]}</td>
                               <td><a target="_blank" href=${element.url}><button type="button" class="btn btn-success"><lord-icon src="https://cdn.lordicon.com/xcrjfuzb.json" trigger="loop" delay="1000" style="width:15px;height:15px;margin-right:10px;display:inline-block"> </lord-icon>Download</button></a></td>
