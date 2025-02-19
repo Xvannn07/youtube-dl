@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         videoTable.classList.add('hidden');
                     });
     
-                    document.getElementById('thumb').src = data.videoDetail.thumbnails[2].url || data.videoDetail.thumbnails[1].url || data.videoDetail.thumbnails[0].url;
+                    document.getElementById('thumb').src = data.videoDetail.thumbnail
                     document.getElementById('title').textContent = "Title: " + data.videoDetail.title;
                     document.getElementById('duration').textContent = "Duration: " + await convertToTime(data.videoDetail.duration) || "Not Found";
                     //document.getElementById('author').textContent = "Author: " + data.videoDetail.author.name || "Not Found";
