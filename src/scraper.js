@@ -64,7 +64,7 @@ async function ummy(urls) {
     // Menangani error dan mengembalikan pesan error
     return {
       status: false,
-      log: e.message
+      message: e.message
     };
   }
 }
