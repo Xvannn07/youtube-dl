@@ -28,7 +28,6 @@ app.post("/api", async (req, res) => {
                videoDetail: resp.meta,
                format_video: resp.url
            })
-        }
     } catch(e) {
          res.json({
             status: "error",
