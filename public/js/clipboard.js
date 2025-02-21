@@ -25,12 +25,12 @@ pasteContainer.addEventListener('click', async () => {
                     linkContainer.value = text;
                 } else {
                     console.error('Clipboard read permission denied');
-                    showAlert('Clipboard read permission denied', 'danger');
+                    costumAlert('Clipboard read permission denied', { status: 'fail' });
                 }
             });
         } catch (err) {
             console.error('Failed to read clipboard:', err);
-            showAlert('Failed to read clipboard contents', 'danger');
+            costumAlert('Failed to read clipboard contents', { status: 'fail' });
         }
     }
     togglePasteButton();
