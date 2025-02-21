@@ -8,12 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //const func = require("../src/function.js");
     
-    navigator.clipboard && document.getElementById("paste").classList.remove("disabled");
-    document.getElementById("paste").addEventListener("click",
-        function () {
-
-            pasteLink(true);
-        });
+    videoUrlInput.addEventListener('input', togglePasteButton);
   
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
