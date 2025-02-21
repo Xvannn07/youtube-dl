@@ -1,4 +1,4 @@
-const pasteContainer = document.getElementById("paste");
+const pasteContainer = document.getElementById("paste-button");
 const linkContainer = document.getElementById("video-url");
 
 function togglePasteButton() {
